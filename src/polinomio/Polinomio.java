@@ -23,6 +23,13 @@ public class Polinomio {
 		scan.close();
 	}
 	
+	public Polinomio (double[] coef){
+		this.grado=coef.length -1;		//REVISAR:No me acuerdo si definir asi es valido.
+		this.coeficientes[]=new double[coef.length];
+		for(int i=0;i<this.coeficientes.length;i++)
+			coeficientes[i]=coef[i];
+	}
+	
 	public double evaluarMSucesivas(double x ) //YA ESTA HECHA Y TESTEADA
 	{
 		double res = 0;
@@ -57,9 +64,16 @@ public class Polinomio {
 		
 	}
 	
-	double evaluarPDinamica (double x )//FALTA HACER
+	double evaluarPDinamica (double x )//Vamos a hacerlo por Horner creando polinomios por cada paso. let the world burn!
 	{
-		return x;
+		if (this.coeficientes.length > 1){
+			double aux[]= new double[this.coeficientes.length-1];
+			for(int i=0;i<aux.length;i++)
+				aux[i]=this.coeficientes[i];
+			}
+		else
+			return this.coeficientes[0];
+		return this.coeficientes[this.length]+x* (new Polinomio(aux).evaluarPDinamica(x))
 	}
 	
 	double evaluarMejorada (double x )//FALTA HACER
