@@ -41,9 +41,20 @@ public class Polinomio {
 		return res;
 	}
 	
-	double evaluarRecursiva (double x ) //FALTA HACER
-	{
-		return x;
+
+	double Horner(int c double x){
+		if (c==0)
+		return this.coeficientes[c]
+		else
+		return (coeficientes[c]+Horner(c-1,x)*x)
+	}
+	
+	
+	double evaluarRecursiva (double x ){ //analisis 30 min, implementacion 45 min. TODO: testear
+		//Usando Metodo de Horner.
+		int c=this.grado;
+		return Horner(c,x);
+		
 	}
 	
 	double evaluarPDinamica (double x )//FALTA HACER
