@@ -64,7 +64,7 @@ public class Polinomio {
 		
 	}
 	
-	double evaluarPDinamica (double x )//Vamos a hacerlo por Horner creando polinomios por cada paso. let the world burn!
+	double evaluarPDinamica (double x )//Vamos a hacerlo por Horner creando polinomios por cada paso. let the world burn! Implementacion 30 min
 	{
 		if (this.coeficientes.length > 1){
 			double aux[]= new double[this.coeficientes.length-1];
@@ -76,9 +76,12 @@ public class Polinomio {
 		return this.coeficientes[this.length]+x* (new Polinomio(aux).evaluarPDinamica(x))
 	}
 	
-	double evaluarMejorada (double x )//FALTA HACER
+	double evaluarMejorada (double x )//Como no se bien que tema es este, voy a inventarme algo que intenta mejorar lo anterior. Implementacion 20 min
 	{
-		return x;
+		double acum=0;
+		for (int i=0; i<=this.grado; i++)				//acum es el resultado, ahi se le va multiplicando sucesivamente nuevos x y sumando coeficientes.
+			acum = acum * x + this.coeficientes[i];		//Asi, cada coeficiente se multiplica por x la cantidad de veces que corresponda. Cheto.	
+		return acum;
 	}
 	
 
